@@ -3,7 +3,7 @@ console.log("working");
 
 // Create the map object with a center and zoom level.
 
-let map = L.map('mapid').setView([34.0522, -118.2437], 14);
+let map = L.map('mapid').setView([31.3038, -96.2528], 4);
 
 // Create the map object with a center and zoom level.
 // let map = L.map('mapid', {
@@ -19,24 +19,21 @@ attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStree
     accessToken: API_KEY
 });
 
-// Add a marker to the map for Los Angeles, California.
-// let marker = L.marker([34.0522, -118.2437]).addTo(map);
+// Get data from cities.js
+let cityData = cities;
 
-// Add a circle marker to the map for Los Angeles, California.
-// let marker = L.circle([34.0522, -118.2437], {
-//     radius: 300,
-//     color: "black",
-//     fillColor: "yellow",
-//     opacity: 0.25
-
-// }).addTo(map);
-
-// Add a circle marker to the map for Los Angeles, California.
-let marker = L.circleMarker([34.0522, -118.2437], {
-    radius: 300,
-    color: "black",
-    fillColor: '#ffffa1'
-}).addTo(map);
+// Loop through the cities array and create one marker for each city.
+cityData.forEach(function(city) {
+    console.log(city);
+    L.circleMarker(city.location, {
+        radius: city.population/200000,
+        weight: 4,
+        color: "orange",
+        opacity: 0.5
+    })
+    .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+    .addTo(map);
+});
 
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
