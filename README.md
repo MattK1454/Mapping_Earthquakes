@@ -25,4 +25,5 @@ The images above were created using the overlay and map selection features coded
 
 ## References
 
-1. 
+1. Module 3 Challenge. (n.d.). Retrieved December 20, 2020, from
+https://courses.bootcampspot.com/courses/453/assignments/5868?module_item_id=85553
